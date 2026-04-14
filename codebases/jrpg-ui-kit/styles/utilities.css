@@ -1,0 +1,391 @@
+/**
+ * JRPG UI - Utility Classes
+ * Common pixel-perfect utility classes
+ *
+ * Import after tokens.css:
+ * @import './tokens.css';
+ * @import './utilities.css';
+ */
+
+/* ==================== Pixel Rendering ==================== */
+
+.pixel {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.pixel-text {
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: never;
+  transform: translateZ(0);
+}
+
+/* ==================== Text Utilities ==================== */
+
+.text-primary {
+  color: var(--text-primary);
+  text-shadow: var(--shadow-text);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+  text-shadow: var(--shadow-text-sm);
+}
+
+.text-muted {
+  color: var(--text-muted);
+  text-shadow: var(--shadow-text-sm);
+}
+
+.text-accent {
+  color: var(--text-accent);
+  text-shadow: var(--shadow-text-sm);
+}
+
+/* Text shadow variants */
+.text-shadow-sm {
+  text-shadow: 1px 1px 0 var(--text-primary-shadow);
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 0 var(--text-primary-shadow);
+}
+
+.text-shadow-lg {
+  text-shadow: 3px 3px 0 var(--text-primary-shadow);
+}
+
+.text-outlined {
+  color: #FFFFFF;
+  text-shadow:
+    -1px -1px 0 #000,
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
+}
+
+/* Text sizes */
+.text-xs { font-size: var(--font-size-xs); }
+.text-sm { font-size: var(--font-size-sm); }
+.text-base { font-size: var(--font-size-base); }
+.text-lg { font-size: var(--font-size-lg); }
+.text-xl { font-size: var(--font-size-xl); }
+.text-2xl { font-size: var(--font-size-2xl); }
+.text-3xl { font-size: var(--font-size-3xl); }
+
+/* ==================== Spacing Utilities ==================== */
+
+/* Padding */
+.p-0 { padding: 0; }
+.p-1 { padding: var(--space-1); }
+.p-2 { padding: var(--space-2); }
+.p-3 { padding: var(--space-3); }
+.p-4 { padding: var(--space-4); }
+.p-6 { padding: var(--space-6); }
+.p-8 { padding: var(--space-8); }
+
+/* Margin */
+.m-0 { margin: 0; }
+.m-1 { margin: var(--space-1); }
+.m-2 { margin: var(--space-2); }
+.m-3 { margin: var(--space-3); }
+.m-4 { margin: var(--space-4); }
+.m-6 { margin: var(--space-6); }
+.m-8 { margin: var(--space-8); }
+
+/* Margin auto */
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Gap (for flex/grid) */
+.gap-1 { gap: var(--space-1); }
+.gap-2 { gap: var(--space-2); }
+.gap-3 { gap: var(--space-3); }
+.gap-4 { gap: var(--space-4); }
+.gap-6 { gap: var(--space-6); }
+.gap-8 { gap: var(--space-8); }
+
+/* ==================== Layout Utilities ==================== */
+
+.flex { display: flex; }
+.inline-flex { display: inline-flex; }
+.grid { display: grid; }
+.inline-grid { display: inline-grid; }
+.block { display: block; }
+.inline-block { display: inline-block; }
+.hidden { display: none; }
+
+/* Flex direction */
+.flex-row { flex-direction: row; }
+.flex-col { flex-direction: column; }
+
+/* Flex alignment */
+.items-start { align-items: flex-start; }
+.items-center { align-items: center; }
+.items-end { align-items: flex-end; }
+.items-stretch { align-items: stretch; }
+
+.justify-start { justify-content: flex-start; }
+.justify-center { justify-content: center; }
+.justify-end { justify-content: flex-end; }
+.justify-between { justify-content: space-between; }
+.justify-around { justify-content: space-around; }
+
+/* Flex wrap */
+.flex-wrap { flex-wrap: wrap; }
+.flex-nowrap { flex-wrap: nowrap; }
+
+/* ==================== Panel Utilities ==================== */
+
+.panel {
+  background: var(--bg-layer-1);
+  border: 4px solid var(--ff-slate-500);
+  padding: var(--space-4);
+  box-shadow: var(--shadow-box);
+}
+
+.panel-compact {
+  padding: var(--space-2);
+  border-width: 2px;
+}
+
+.panel-spacious {
+  padding: var(--space-6);
+}
+
+.panel-transparent {
+  background: rgba(24, 24, 40, 0.95);
+}
+
+/* ==================== Border Utilities ==================== */
+
+.border { border: var(--border-standard) solid var(--ff-slate-500); }
+.border-thin { border: var(--border-thin) solid var(--ff-slate-500); }
+.border-thick { border: var(--border-thick) solid var(--ff-slate-500); }
+
+.border-primary { border-color: var(--ct-blue-600); }
+.border-success { border-color: var(--mana-green-600); }
+.border-danger { border-color: var(--phoenix-red-600); }
+.border-warning { border-color: var(--thunder-yellow-500); }
+
+/* ==================== Background Utilities ==================== */
+
+.bg-layer-0 { background-color: var(--bg-layer-0); }
+.bg-layer-1 { background-color: var(--bg-layer-1); }
+.bg-layer-2 { background-color: var(--bg-layer-2); }
+.bg-layer-3 { background-color: var(--bg-layer-3); }
+
+.bg-primary { background-color: var(--ct-blue-600); }
+.bg-success { background-color: var(--mana-green-600); }
+.bg-danger { background-color: var(--phoenix-red-600); }
+.bg-warning { background-color: var(--thunder-yellow-500); }
+
+/* ==================== Shadow Utilities ==================== */
+
+.shadow-sm { box-shadow: var(--shadow-box-sm); }
+.shadow { box-shadow: var(--shadow-box); }
+.shadow-lg { box-shadow: var(--shadow-box-lg); }
+.shadow-none { box-shadow: none; }
+
+/* ==================== Position Utilities ==================== */
+
+.relative { position: relative; }
+.absolute { position: absolute; }
+.fixed { position: fixed; }
+.sticky { position: sticky; }
+
+/* ==================== Screen Reader Only ==================== */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ==================== Icon Utilities ==================== */
+
+.icon {
+  display: inline-block;
+  image-rendering: pixelated;
+}
+
+.icon-xs { width: var(--icon-size-xs); height: var(--icon-size-xs); }
+.icon-sm { width: var(--icon-size-sm); height: var(--icon-size-sm); }
+.icon-md { width: var(--icon-size-md); height: var(--icon-size-md); }
+.icon-lg { width: var(--icon-size-lg); height: var(--icon-size-lg); }
+.icon-xl { width: var(--icon-size-xl); height: var(--icon-size-xl); }
+
+/* ==================== Container Utilities ==================== */
+
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-4);
+  padding-right: var(--space-4);
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+/* ==================== Grid Utilities ==================== */
+
+.grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
+.grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+.grid-cols-5 { grid-template-columns: repeat(5, 1fr); }
+.grid-cols-6 { grid-template-columns: repeat(6, 1fr); }
+
+/* ==================== Width/Height Utilities ==================== */
+
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+.w-screen { width: 100vw; }
+.h-screen { height: 100vh; }
+
+/* ==================== Cursor Utilities ==================== */
+
+.cursor-pointer { cursor: pointer; }
+.cursor-not-allowed { cursor: not-allowed; }
+
+/* Menu cursor animation */
+.menu-cursor {
+  display: inline-block;
+  animation: cursor-bounce 0.6s ease-in-out infinite;
+}
+
+@keyframes cursor-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* ==================== Animation Utilities ==================== */
+
+.animate-blink {
+  animation: blink 0.8s steps(2) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-float {
+  animation: float-up 1s ease-out forwards;
+}
+
+@keyframes float-up {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-40px) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* ==================== Hover Utilities ==================== */
+
+/* Only apply hover effects on devices that support hover */
+@media (hover: hover) and (pointer: fine) {
+  .hover-lift {
+    transition: transform var(--transition-fast) var(--easing-default);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px);
+  }
+
+  .hover-shadow:hover {
+    box-shadow: var(--shadow-box);
+  }
+}
+
+/* ==================== Responsive Utilities ==================== */
+
+/* Hide on mobile */
+@media (max-width: 767px) {
+  .hidden-mobile {
+    display: none;
+  }
+}
+
+/* Hide on desktop */
+@media (min-width: 768px) {
+  .hidden-desktop {
+    display: none;
+  }
+}
+
+/* Show only on mobile */
+.mobile-only {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .mobile-only {
+    display: none;
+  }
+}
+
+/* Show only on desktop */
+.desktop-only {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .desktop-only {
+    display: block;
+  }
+}

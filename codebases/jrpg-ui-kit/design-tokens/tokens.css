@@ -1,0 +1,346 @@
+/**
+ * JRPG UI Design Tokens
+ * 16-bit SNES-style design system
+ *
+ * Usage: Import this file first in your CSS
+ * @import './tokens.css';
+ */
+
+:root {
+  /* ==================== Colors ==================== */
+
+  /* Chrono Trigger Blue (Primary) */
+  --ct-blue-900: #000818;
+  --ct-blue-800: #101840;
+  --ct-blue-700: #1830A0;
+  --ct-blue-600: #2040D0;
+  --ct-blue-500: #4060F0;
+  --ct-blue-400: #6080F8;
+  --ct-blue-300: #90A8FF;
+  --ct-blue-200: #C0D0FF;
+
+  /* Final Fantasy Slate (Neutral) */
+  --ff-slate-900: #0C0C18;
+  --ff-slate-800: #181828;
+  --ff-slate-700: #282840;
+  --ff-slate-600: #404060;
+  --ff-slate-500: #606080;
+  --ff-slate-400: #8888A8;
+  --ff-slate-300: #B0B0C8;
+  --ff-slate-200: #D8D8E8;
+  --ff-slate-100: #F0F0F8;
+
+  /* Mana Green (Success) */
+  --mana-green-900: #082008;
+  --mana-green-800: #104010;
+  --mana-green-700: #1C6020;
+  --mana-green-600: #28A030;
+  --mana-green-500: #40C048;
+  --mana-green-400: #60D868;
+  --mana-green-300: #90F098;
+  --mana-green-200: #C0F8C8;
+
+  /* Phoenix Red (Danger) */
+  --phoenix-red-900: #200808;
+  --phoenix-red-800: #401010;
+  --phoenix-red-700: #901820;
+  --phoenix-red-600: #D02030;
+  --phoenix-red-500: #F03848;
+  --phoenix-red-400: #F86068;
+  --phoenix-red-300: #FF9098;
+  --phoenix-red-200: #FFC0C8;
+
+  /* Thunder Yellow (Warning) */
+  --thunder-yellow-900: #201808;
+  --thunder-yellow-800: #403008;
+  --thunder-yellow-700: #906010;
+  --thunder-yellow-600: #D09020;
+  --thunder-yellow-500: #F0C030;
+  --thunder-yellow-400: #F8D850;
+  --thunder-yellow-300: #FFF070;
+  --thunder-yellow-200: #FFF8B0;
+
+  /* Ether Purple (Magic) */
+  --ether-purple-900: #180820;
+  --ether-purple-800: #281040;
+  --ether-purple-700: #502080;
+  --ether-purple-600: #7830B0;
+  --ether-purple-500: #9848D0;
+  --ether-purple-400: #B868F0;
+  --ether-purple-300: #D090FF;
+  --ether-purple-200: #E8C0FF;
+
+  /* Earthbound Brown (Warm Neutral) */
+  --earth-brown-900: #181008;
+  --earth-brown-800: #302010;
+  --earth-brown-700: #604020;
+  --earth-brown-600: #906030;
+  --earth-brown-500: #C08848;
+  --earth-brown-400: #D0A860;
+  --earth-brown-300: #E8C880;
+  --earth-brown-200: #F8E8B0;
+
+  /* Semantic Colors */
+  --color-primary: var(--ct-blue-600);
+  --color-primary-hover: var(--ct-blue-500);
+  --color-primary-active: var(--ct-blue-700);
+
+  --color-success: var(--mana-green-600);
+  --color-warning: var(--thunder-yellow-500);
+  --color-danger: var(--phoenix-red-600);
+  --color-info: var(--ct-blue-500);
+
+  /* Text Colors */
+  --text-primary: #F8F8F0;
+  --text-primary-shadow: #484840;
+
+  --text-secondary: #B0B0C8;
+  --text-secondary-shadow: #383848;
+
+  --text-muted: #808098;
+  --text-muted-shadow: #282838;
+
+  --text-accent: #FFF070;
+  --text-accent-shadow: #806020;
+
+  --text-inverse: #181820;
+  --text-inverse-shadow: #E8E8E0;
+
+  /* UI State Colors */
+  --state-default-bg: var(--ff-slate-600);
+  --state-default-border: var(--ff-slate-500);
+  --state-default-text: var(--ff-slate-100);
+
+  --state-hover-bg: #5060A0;
+  --state-hover-border: #7080C0;
+  --state-hover-text: #FFFFFF;
+
+  --state-active-bg: var(--ct-blue-600);
+  --state-active-border: var(--ct-blue-500);
+  --state-active-text: #FFFFFF;
+
+  --state-disabled-bg: var(--ff-slate-700);
+  --state-disabled-border: var(--ff-slate-600);
+  --state-disabled-text: #606070;
+
+  --state-focus-border: var(--thunder-yellow-300);
+  --state-focus-glow: var(--thunder-yellow-500);
+
+  /* Background Layers */
+  --bg-layer-0: #000810;
+  --bg-layer-1: var(--ff-slate-800);
+  --bg-layer-2: var(--ff-slate-700);
+  --bg-layer-3: #303850;
+  --bg-overlay: rgba(0, 8, 16, 0.85);
+
+  /* Status Indicators */
+  --hp-full: var(--mana-green-500);
+  --hp-good: #A0D050;
+  --hp-warning: var(--thunder-yellow-500);
+  --hp-critical: var(--phoenix-red-500);
+
+  --mp-full: var(--ct-blue-500);
+  --mp-low: var(--ether-purple-600);
+
+  --xp-bar: var(--thunder-yellow-500);
+  --xp-bar-bg: var(--thunder-yellow-900);
+
+  --stamina-full: #F08030;
+  --stamina-depleted: #905020;
+
+  /* Element Colors */
+  --element-fire: var(--phoenix-red-500);
+  --element-water: #4080F0;
+  --element-grass: var(--mana-green-500);
+  --element-electric: var(--thunder-yellow-500);
+  --element-ice: #90D8F8;
+  --element-fighting: #D04020;
+  --element-poison: var(--ether-purple-500);
+  --element-ground: var(--earth-brown-500);
+  --element-flying: var(--ct-blue-300);
+  --element-psychic: #F068D8;
+  --element-bug: #A0B820;
+  --element-rock: #B8A060;
+  --element-ghost: #7060B0;
+  --element-dragon: #7038F0;
+  --element-dark: #483830;
+  --element-steel: var(--ff-slate-300);
+  --element-fairy: #F0A0D8;
+  --element-normal: #B0B0A0;
+
+  /* Rarity Tiers */
+  --rarity-common: var(--ff-slate-300);
+  --rarity-uncommon: var(--mana-green-500);
+  --rarity-rare: var(--ct-blue-500);
+  --rarity-epic: var(--ether-purple-500);
+  --rarity-legendary: #F08030;
+  --rarity-mythic: var(--thunder-yellow-500);
+
+  /* ==================== Typography ==================== */
+
+  /* Font Families */
+  --font-primary: 'Press Start 2P', monospace;
+  --font-secondary: 'Silkscreen', monospace;
+  --font-mono: 'VT323', monospace;
+
+  /* Font Sizes */
+  --font-size-xs: 8px;
+  --font-size-sm: 12px;
+  --font-size-base: 16px;
+  --font-size-lg: 20px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 32px;
+  --font-size-3xl: 40px;
+
+  /* Line Heights */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.6;
+  --line-height-loose: 1.8;
+
+  /* Letter Spacing */
+  --letter-spacing-normal: 0;
+  --letter-spacing-tight: -0.05em;
+  --letter-spacing-wide: 0.05em;
+  --letter-spacing-expanded: 0.1em;
+
+  /* ==================== Spacing ==================== */
+
+  /* Base spacing scale (4px increments) */
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* ==================== Borders ==================== */
+
+  --border-thin: 2px;
+  --border-standard: 3px;
+  --border-thick: 4px;
+  --border-chunky: 6px;
+
+  --border-radius-none: 0;
+  --border-radius-sm: 2px;
+  --border-radius-md: 4px;
+  --border-radius-lg: 8px;
+
+  /* ==================== Shadows ==================== */
+
+  --shadow-text: 2px 2px 0 var(--text-primary-shadow);
+  --shadow-text-sm: 1px 1px 0 var(--text-primary-shadow);
+  --shadow-text-lg: 3px 3px 0 var(--text-primary-shadow);
+
+  --shadow-box-sm: 2px 2px 0 rgba(0, 0, 0, 0.5);
+  --shadow-box: 4px 4px 0 rgba(0, 0, 0, 0.5);
+  --shadow-box-lg: 6px 6px 0 rgba(0, 0, 0, 0.5);
+
+  /* ==================== Icons ==================== */
+
+  --icon-size-xs: 16px;
+  --icon-size-sm: 24px;
+  --icon-size-md: 32px;
+  --icon-size-lg: 48px;
+  --icon-size-xl: 64px;
+
+  /* ==================== Transitions ==================== */
+
+  --transition-fast: 150ms;
+  --transition-base: 250ms;
+  --transition-slow: 350ms;
+
+  --easing-default: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --easing-in: cubic-bezier(0.32, 0, 0.67, 0);
+  --easing-out: cubic-bezier(0.33, 1, 0.68, 1);
+  --easing-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* ==================== Z-Index ==================== */
+
+  --z-index-base: 0;
+  --z-index-dropdown: 100;
+  --z-index-sticky: 200;
+  --z-index-overlay: 300;
+  --z-index-modal: 400;
+  --z-index-popover: 500;
+  --z-index-tooltip: 600;
+
+  /* ==================== Breakpoints ==================== */
+  /* Use these in media queries */
+  --breakpoint-xs: 320px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1920px;
+}
+
+/* ==================== Pixel-Perfect Rendering ==================== */
+
+body {
+  /* Force pixel rendering */
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: never;
+
+  /* Prevent sub-pixel rendering */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+
+  /* Default font */
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+
+  /* Default colors */
+  color: var(--text-primary);
+  background-color: var(--bg-layer-0);
+}
+
+/* Pixel-perfect image rendering */
+img,
+canvas,
+video {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+/* ==================== Dark Mode Support ==================== */
+/* Tokens already optimized for dark mode, but you can override here if needed */
+
+@media (prefers-color-scheme: light) {
+  :root {
+    /* Optional: Light mode overrides */
+    /* Most JRPG UIs are dark by nature, so this is rarely needed */
+  }
+}
+
+/* ==================== High Contrast Mode ==================== */
+
+@media (prefers-contrast: high) {
+  :root {
+    --text-primary: #FFFFFF;
+    --text-secondary: #DDDDDD;
+    --border-standard: var(--border-thick);
+  }
+}
+
+/* ==================== Reduced Motion ==================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

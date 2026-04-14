@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JRPG UI - Complete Example</title>
+
+  <!-- Import fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+
+  <!-- Import design system -->
+  <link rel="stylesheet" href="../design-tokens/tokens.css">
+  <link rel="stylesheet" href="../styles/utilities.css">
+  <link rel="stylesheet" href="../components/buttons/Button.css">
+  <link rel="stylesheet" href="../components/dialogs/DialogBox.css">
+  <link rel="stylesheet" href="../components/status-bars/StatusBar.css">
+
+  <style>
+    /* Page-specific styles */
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg-layer-0);
+      padding: var(--space-8);
+    }
+
+    .demo-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .demo-section {
+      margin-bottom: var(--space-12);
+    }
+
+    .demo-section__title {
+      font-family: var(--font-primary);
+      font-size: var(--font-size-xl);
+      color: var(--text-accent);
+      text-shadow: var(--shadow-text);
+      margin-bottom: var(--space-6);
+      text-align: center;
+    }
+
+    /* Character card */
+    .character-card {
+      background: var(--bg-layer-1);
+      border: 4px solid var(--ff-slate-500);
+      padding: var(--space-6);
+      max-width: 400px;
+      box-shadow: var(--shadow-box);
+    }
+
+    .character-card__header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      margin-bottom: var(--space-4);
+    }
+
+    .character-card__portrait {
+      width: 64px;
+      height: 64px;
+      background: var(--ct-blue-700);
+      border: 3px solid var(--ct-blue-500);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+    }
+
+    .character-card__info {
+      flex: 1;
+    }
+
+    .character-card__name {
+      font-family: var(--font-primary);
+      font-size: var(--font-size-lg);
+      color: var(--text-accent);
+      text-shadow: var(--shadow-text-sm);
+      margin-bottom: var(--space-1);
+    }
+
+    .character-card__class {
+      font-family: var(--font-primary);
+      font-size: var(--font-size-sm);
+      color: var(--text-secondary);
+      text-shadow: var(--shadow-text-sm);
+    }
+
+    .character-card__stats {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    /* Menu */
+    .menu {
+      background: var(--bg-layer-1);
+      border: 4px solid var(--ff-slate-500);
+      padding: var(--space-4);
+      max-width: 600px;
+      box-shadow: var(--shadow-box);
+    }
+
+    .menu__title {
+      font-family: var(--font-primary);
+      font-size: var(--font-size-base);
+      color: var(--text-accent);
+      text-shadow: var(--shadow-text-sm);
+      margin-bottom: var(--space-4);
+      padding-bottom: var(--space-2);
+      border-bottom: 2px solid var(--ff-slate-600);
+    }
+
+    .menu-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .menu-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-3);
+      font-family: var(--font-primary);
+      font-size: var(--font-size-base);
+      color: var(--text-primary);
+      text-shadow: var(--shadow-text-sm);
+      cursor: pointer;
+      transition: background var(--transition-fast);
+    }
+
+    .menu-item:hover {
+      background: rgba(64, 96, 240, 0.2);
+    }
+
+    .menu-item--selected {
+      background: rgba(64, 96, 240, 0.3);
+      color: var(--text-accent);
+    }
+
+    .menu-item__cursor {
+      font-size: var(--font-size-sm);
+      visibility: hidden;
+    }
+
+    .menu-item--selected .menu-item__cursor {
+      visibility: visible;
+      animation: cursor-bounce 0.6s ease-in-out infinite;
+    }
+
+    /* Button grid */
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-4);
+      max-width: 800px;
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-container">
+
+    <!-- Header -->
+    <header class="demo-section">
+      <h1 class="demo-section__title">JRPG UI Design System</h1>
+      <p class="text-primary text-center" style="text-shadow: 2px 2px 0 #000;">
+        Complete Component Examples
+      </p>
+    </header>
+
+    <!-- Character Card -->
+    <section class="demo-section">
+      <h2 class="demo-section__title text-xl">Character Stats</h2>
+      <div class="flex justify-center">
+        <div class="character-card">
+          <div class="character-card__header">
+            <div class="character-card__portrait pixel">
+              🗡️
+            </div>
+            <div class="character-card__info">
+              <div class="character-card__name">CLOUD</div>
+              <div class="character-card__class">Lv 24 • Knight</div>
+            </div>
+          </div>
+
+          <div class="character-card__stats">
+            <!-- HP Bar -->
+            <div class="jrpg-status-bar jrpg-status-bar--md jrpg-status-bar--animated">
+              <span class="jrpg-status-bar__label">HP</span>
+              <div class="jrpg-status-bar__container">
+                <div class="jrpg-status-bar__fill" style="width: 75%; background: var(--hp-full);"></div>
+              </div>
+              <span class="jrpg-status-bar__value">450/500</span>
+            </div>
+
+            <!-- MP Bar -->
+            <div class="jrpg-status-bar jrpg-status-bar--md jrpg-status-bar--animated">
+              <span class="jrpg-status-bar__label">MP</span>
+              <div class="jrpg-status-bar__container">
+                <div class="jrpg-status-bar__fill" style="width: 60%; background: var(--mp-full);"></div>
+              </div>
+              <span class="jrpg-status-bar__value">90/150</span>
+            </div>
+
+            <!-- XP Bar -->
+            <div class="jrpg-status-bar jrpg-status-bar--md jrpg-status-bar--animated">
+              <span class="jrpg-status-bar__label">XP</span>
+              <div class="jrpg-status-bar__container">
+                <div class="jrpg-status-bar__fill" style="width: 45%; background: var(--xp-bar);"></div>
+              </div>
+              <span class="jrpg-status-bar__value">900/2000</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu Example -->
+    <section class="demo-section">
+      <h2 class="demo-section__title text-xl">Main Menu</h2>
+      <div class="flex justify-center">
+        <div class="menu">
+          <div class="menu__title">MENU</div>
+          <ul class="menu-list">
+            <li class="menu-item menu-item--selected">
+              <span class="menu-item__cursor">►</span>
+              <span>Items</span>
+            </li>
+            <li class="menu-item">
+              <span class="menu-item__cursor">►</span>
+              <span>Equipment</span>
+            </li>
+            <li class="menu-item">
+              <span class="menu-item__cursor">►</span>
+              <span>Magic</span>
+            </li>
+            <li class="menu-item">
+              <span class="menu-item__cursor">►</span>
+              <span>Status</span>
+            </li>
+            <li class="menu-item">
+              <span class="menu-item__cursor">►</span>
+              <span>Save</span>
+            </li>
+            <li class="menu-item">
+              <span class="menu-item__cursor">►</span>
+              <span>Config</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Buttons -->
+    <section class="demo-section">
+      <h2 class="demo-section__title text-xl">Buttons</h2>
+      <div class="flex justify-center">
+        <div class="button-grid">
+          <button class="jrpg-button jrpg-button--primary jrpg-button--md">
+            <span class="jrpg-button__text">Primary</span>
+          </button>
+          <button class="jrpg-button jrpg-button--success jrpg-button--md">
+            <span class="jrpg-button__text">Success</span>
+          </button>
+          <button class="jrpg-button jrpg-button--danger jrpg-button--md">
+            <span class="jrpg-button__text">Danger</span>
+          </button>
+          <button class="jrpg-button jrpg-button--warning jrpg-button--md">
+            <span class="jrpg-button__text">Warning</span>
+          </button>
+          <button class="jrpg-button jrpg-button--default jrpg-button--md">
+            <span class="jrpg-button__text">Default</span>
+          </button>
+          <button class="jrpg-button jrpg-button--ghost jrpg-button--md">
+            <span class="jrpg-button__text">Ghost</span>
+          </button>
+          <button class="jrpg-button jrpg-button--primary jrpg-button--sm">
+            <span class="jrpg-button__text">Small</span>
+          </button>
+          <button class="jrpg-button jrpg-button--primary jrpg-button--lg">
+            <span class="jrpg-button__text">Large</span>
+          </button>
+          <button class="jrpg-button jrpg-button--primary jrpg-button--md jrpg-button--disabled" disabled>
+            <span class="jrpg-button__text">Disabled</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dialog Box -->
+    <div class="jrpg-dialog-box jrpg-dialog-box--bottom">
+      <div class="jrpg-dialog-box__speaker">HERO</div>
+      <div class="jrpg-dialog-box__content">
+        <p class="jrpg-dialog-box__text">
+          The legendary sword lies beyond the mountains. We must reach it before nightfall!
+        </p>
+        <span class="jrpg-dialog-box__indicator">▼</span>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Add menu interactivity
+    document.querySelectorAll('.menu-item').forEach(item => {
+      item.addEventListener('click', () => {
+        document.querySelectorAll('.menu-item').forEach(i =>
+          i.classList.remove('menu-item--selected')
+        );
+        item.classList.add('menu-item--selected');
+      });
+    });
+
+    // Add keyboard navigation for menu
+    let selectedIndex = 0;
+    const menuItems = Array.from(document.querySelectorAll('.menu-item'));
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        selectedIndex = Math.max(0, selectedIndex - 1);
+        updateSelection();
+      } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        selectedIndex = Math.min(menuItems.length - 1, selectedIndex + 1);
+        updateSelection();
+      }
+    });
+
+    function updateSelection() {
+      menuItems.forEach((item, index) => {
+        item.classList.toggle('menu-item--selected', index === selectedIndex);
+      });
+    }
+
+    // Animate HP bars on load
+    window.addEventListener('load', () => {
+      const bars = document.querySelectorAll('.jrpg-status-bar__fill');
+      bars.forEach(bar => {
+        const width = bar.style.width;
+        bar.style.width = '0';
+        setTimeout(() => {
+          bar.style.width = width;
+        }, 100);
+      });
+    });
+  </script>
+</body>
+</html>

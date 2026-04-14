@@ -1,0 +1,235 @@
+/**
+ * JRPG Button Styles
+ * Authentic 16-bit SNES button aesthetics
+ */
+
+.jrpg-button {
+  /* Reset default button styles */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  background: none;
+  margin: 0;
+  cursor: pointer;
+  font-family: inherit;
+
+  /* Base styles */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  text-align: center;
+  white-space: nowrap;
+  user-select: none;
+
+  /* Pixel-perfect rendering */
+  image-rendering: pixelated;
+  transform: translateX(0) translateY(0);
+
+  /* Transition for smooth interactions */
+  transition: all var(--transition-fast) var(--easing-default);
+
+  /* Default variant colors */
+  background-color: var(--state-default-bg);
+  color: var(--text-primary);
+  text-shadow: var(--shadow-text);
+  border: var(--border-standard) solid var(--state-default-border);
+  box-shadow: var(--shadow-box-sm);
+}
+
+.jrpg-button__text {
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+/* ==================== Sizes ==================== */
+
+.jrpg-button--sm {
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--font-size-sm);
+  border-width: var(--border-thin);
+}
+
+.jrpg-button--md {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-size-base);
+}
+
+.jrpg-button--lg {
+  padding: var(--space-3) var(--space-6);
+  font-size: var(--font-size-lg);
+}
+
+/* ==================== Variants ==================== */
+
+/* Default variant */
+.jrpg-button--default {
+  background-color: var(--state-default-bg);
+  border-color: var(--state-default-border);
+  color: var(--state-default-text);
+}
+
+.jrpg-button--default:hover:not(:disabled) {
+  background-color: var(--state-hover-bg);
+  border-color: var(--state-hover-border);
+  color: var(--state-hover-text);
+  box-shadow: var(--shadow-box);
+  transform: translateY(-2px);
+}
+
+.jrpg-button--default:active:not(:disabled) {
+  background-color: var(--state-active-bg);
+  border-color: var(--state-active-border);
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Primary variant */
+.jrpg-button--primary {
+  background-color: var(--ct-blue-600);
+  border-color: var(--ct-blue-700);
+  color: #FFFFFF;
+}
+
+.jrpg-button--primary:hover:not(:disabled) {
+  background-color: var(--ct-blue-500);
+  border-color: var(--ct-blue-600);
+  box-shadow: var(--shadow-box);
+  transform: translateY(-2px);
+}
+
+.jrpg-button--primary:active:not(:disabled) {
+  background-color: var(--ct-blue-700);
+  border-color: var(--ct-blue-800);
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Success variant */
+.jrpg-button--success {
+  background-color: var(--mana-green-600);
+  border-color: var(--mana-green-700);
+  color: #FFFFFF;
+}
+
+.jrpg-button--success:hover:not(:disabled) {
+  background-color: var(--mana-green-500);
+  border-color: var(--mana-green-600);
+  box-shadow: var(--shadow-box);
+  transform: translateY(-2px);
+}
+
+.jrpg-button--success:active:not(:disabled) {
+  background-color: var(--mana-green-700);
+  border-color: var(--mana-green-800);
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Danger variant */
+.jrpg-button--danger {
+  background-color: var(--phoenix-red-600);
+  border-color: var(--phoenix-red-700);
+  color: #FFFFFF;
+}
+
+.jrpg-button--danger:hover:not(:disabled) {
+  background-color: var(--phoenix-red-500);
+  border-color: var(--phoenix-red-600);
+  box-shadow: var(--shadow-box);
+  transform: translateY(-2px);
+}
+
+.jrpg-button--danger:active:not(:disabled) {
+  background-color: var(--phoenix-red-700);
+  border-color: var(--phoenix-red-800);
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Warning variant */
+.jrpg-button--warning {
+  background-color: var(--thunder-yellow-500);
+  border-color: var(--thunder-yellow-600);
+  color: var(--text-inverse);
+  text-shadow: var(--shadow-text-sm);
+}
+
+.jrpg-button--warning:hover:not(:disabled) {
+  background-color: var(--thunder-yellow-400);
+  border-color: var(--thunder-yellow-500);
+  box-shadow: var(--shadow-box);
+  transform: translateY(-2px);
+}
+
+.jrpg-button--warning:active:not(:disabled) {
+  background-color: var(--thunder-yellow-600);
+  border-color: var(--thunder-yellow-700);
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Ghost variant (outline only) */
+.jrpg-button--ghost {
+  background-color: transparent;
+  border-color: var(--state-default-border);
+  color: var(--text-primary);
+}
+
+.jrpg-button--ghost:hover:not(:disabled) {
+  background-color: var(--state-hover-bg);
+  border-color: var(--state-hover-border);
+  box-shadow: var(--shadow-box);
+  transform: translateY(-2px);
+}
+
+.jrpg-button--ghost:active:not(:disabled) {
+  background-color: var(--state-active-bg);
+  border-color: var(--state-active-border);
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* ==================== States ==================== */
+
+.jrpg-button:focus-visible {
+  outline: none;
+  border-color: var(--state-focus-border);
+  box-shadow: 0 0 0 4px var(--state-focus-glow);
+}
+
+.jrpg-button--disabled,
+.jrpg-button:disabled {
+  background-color: var(--state-disabled-bg);
+  border-color: var(--state-disabled-border);
+  color: var(--state-disabled-text);
+  cursor: not-allowed;
+  opacity: 0.6;
+  box-shadow: none;
+  transform: none;
+}
+
+/* ==================== Modifiers ==================== */
+
+.jrpg-button--full-width {
+  width: 100%;
+}
+
+/* ==================== Accessibility ==================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .jrpg-button {
+    transition: none;
+  }
+}
+
+/* Ensure good contrast in high contrast mode */
+@media (prefers-contrast: high) {
+  .jrpg-button {
+    border-width: var(--border-thick);
+  }
+}

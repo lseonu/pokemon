@@ -1,0 +1,150 @@
+/**
+ * JRPG Status Bar Styles
+ * HP/MP/XP bars with authentic 16-bit aesthetics
+ */
+
+.jrpg-status-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-primary);
+}
+
+/* Label */
+.jrpg-status-bar__label {
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  text-shadow: var(--shadow-text-sm);
+  min-width: 32px;
+  text-transform: uppercase;
+}
+
+/* Container (bar background) */
+.jrpg-status-bar__container {
+  flex: 1;
+  height: 12px;
+  background: var(--bg-layer-2);
+  border: 2px solid var(--ff-slate-500);
+  position: relative;
+  overflow: hidden;
+
+  /* Pixel-perfect rendering */
+  image-rendering: pixelated;
+}
+
+/* Fill (colored bar) */
+.jrpg-status-bar__fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--hp-full);
+
+  /* Stepped gradient for retro feel */
+  background: linear-gradient(
+    90deg,
+    currentColor 0%,
+    currentColor 100%
+  );
+}
+
+/* Animated fill transition */
+.jrpg-status-bar--animated .jrpg-status-bar__fill {
+  transition: width 0.3s ease-out;
+}
+
+/* Numeric value */
+.jrpg-status-bar__value {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--text-primary);
+  text-shadow: var(--shadow-text-sm);
+  min-width: 80px;
+  text-align: right;
+}
+
+/* ==================== Sizes ==================== */
+
+.jrpg-status-bar--sm {
+  gap: var(--space-1);
+}
+
+.jrpg-status-bar--sm .jrpg-status-bar__container {
+  height: 8px;
+}
+
+.jrpg-status-bar--sm .jrpg-status-bar__label {
+  font-size: var(--font-size-xs);
+  min-width: 24px;
+}
+
+.jrpg-status-bar--sm .jrpg-status-bar__value {
+  font-size: 12px;
+  min-width: 60px;
+}
+
+.jrpg-status-bar--lg {
+  gap: var(--space-3);
+}
+
+.jrpg-status-bar--lg .jrpg-status-bar__container {
+  height: 16px;
+}
+
+.jrpg-status-bar--lg .jrpg-status-bar__label {
+  font-size: var(--font-size-base);
+  min-width: 48px;
+}
+
+.jrpg-status-bar--lg .jrpg-status-bar__value {
+  font-size: 20px;
+  min-width: 100px;
+}
+
+/* ==================== Critical State Animation ==================== */
+
+.jrpg-status-bar--hp .jrpg-status-bar__fill[style*="--hp-critical"] {
+  animation: critical-pulse 0.8s ease-in-out infinite;
+}
+
+@keyframes critical-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* ==================== Responsive ==================== */
+
+@media (max-width: 768px) {
+  .jrpg-status-bar__label {
+    font-size: var(--font-size-xs);
+    min-width: 24px;
+  }
+
+  .jrpg-status-bar__value {
+    font-size: 12px;
+    min-width: 60px;
+  }
+}
+
+/* ==================== Accessibility ==================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .jrpg-status-bar--animated .jrpg-status-bar__fill {
+    transition: none;
+  }
+
+  .jrpg-status-bar__fill {
+    animation: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .jrpg-status-bar__container {
+    border-width: 3px;
+  }
+}

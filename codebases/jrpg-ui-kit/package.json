@@ -1,0 +1,56 @@
+{
+  "name": "@pokemon/jrpg-ui-kit",
+  "version": "1.0.0",
+  "description": "16-bit SNES-style JRPG UI design system for modern web applications",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .js,.jsx",
+    "format": "prettier --write \"**/*.{js,jsx,css,md,json}\""
+  },
+  "keywords": [
+    "jrpg",
+    "pixel-art",
+    "16-bit",
+    "snes",
+    "ui",
+    "design-system",
+    "react",
+    "components",
+    "retro",
+    "game-ui"
+  ],
+  "author": "Pokemon Design System Team",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@vitejs/plugin-react": "^4.2.0",
+    "eslint": "^8.56.0",
+    "eslint-plugin-react": "^7.33.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^3.2.0",
+    "vite": "^5.0.0"
+  },
+  "files": [
+    "components",
+    "design-tokens",
+    "styles",
+    "utils"
+  ],
+  "exports": {
+    ".": "./index.js",
+    "./tokens.css": "./design-tokens/tokens.css",
+    "./utilities.css": "./styles/utilities.css",
+    "./Button": "./components/buttons/Button.jsx",
+    "./DialogBox": "./components/dialogs/DialogBox.jsx",
+    "./StatusBar": "./components/status-bars/StatusBar.jsx"
+  }
+}
