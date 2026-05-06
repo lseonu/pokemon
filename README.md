@@ -25,3 +25,5 @@ Documentation of major design system decisions and iterations
 **Developers:** Start with [codebases/jrpg-ui-kit/README.md](./codebases/jrpg-ui-kit/README.md)
 
 **Project Managers:** Read [notes/design-system/overview.md](./notes/design-system/overview.md)
+
+testing sync
